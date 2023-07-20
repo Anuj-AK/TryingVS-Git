@@ -1,0 +1,55 @@
+<!--
+    Purpose         : This Component Will Show User Details In Modal
+    Created Date    : 06/14/2023
+    Created By      : Shantanu Sharma
+    version         : V_1.0 - Created By Shantanu Sharma.
+-->
+
+<template>
+	<template if:true={showModal}>
+
+		<!-- Modal/Popup Box LWC starts here -->
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+
+				<!-- Modal/Popup Box LWC Header Starts Here -->
+				<header class="slds-modal__header">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+					<div>
+						<template if:true={isMale}>
+                        	<img class="imageClass" src="https://www.lightningdesignsystem.com/assets/images/avatar1.jpg">
+                    	</template>
+						<template if:true={isFemale}>
+							<img class="imageClass" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg">
+						</template>
+
+						<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{currentLoggedInUserDetails.Name}</h2>
+					</div>
+				</header>
+				<!-- Modal/Popup Box LWC Header Ends Here -->
+
+
+				<!-- Modal/Popup Box LWC Body Starts Here -->
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+					<p><b>Username : &nbsp;</b>{currentLoggedInUserDetails.User_Name__c}</p>
+					</br>
+					<p><b>Contact : &nbsp;</b>{currentLoggedInUserDetails.Phone}</p>
+					</br>
+					<p><b>Email : &nbsp;</b>{currentLoggedInUserDetails.Email}</p>
+				</div>
+				<!-- Modal/Popup Box LWC Body Ends Here -->
+
+			</div>
+		</section>
+		<!-- Modal/Popup Box LWC Ends here -->
+
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+</template>
